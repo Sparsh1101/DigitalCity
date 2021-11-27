@@ -10,14 +10,8 @@ import '../providers/cart.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(
-      context,
-      listen: false,
-    );
-    final cart = Provider.of<Cart>(
-      context,
-      listen: false,
-    );
+    final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -30,7 +24,7 @@ class ProductItem extends StatelessWidget {
           },
           child: Image.network(
             product.imageUrl,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
         footer: GridTileBar(
@@ -59,7 +53,9 @@ class ProductItem extends StatelessWidget {
               Scaffold.of(context).hideCurrentSnackBar();
               Scaffold.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Added item to cart!'),
+                  content: Text(
+                    'Added item to cart!',
+                  ),
                   duration: Duration(seconds: 2),
                   action: SnackBarAction(
                     label: 'UNDO',
