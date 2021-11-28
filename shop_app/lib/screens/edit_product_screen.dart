@@ -248,7 +248,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                               : FittedBox(
                                   child: Image.network(
                                     _imageUrlController.text,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.contain,
                                   ),
                                 ),
                         ),
