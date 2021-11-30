@@ -29,7 +29,7 @@ class Product with ChangeNotifier {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
-    final url = Uri.https('digitalcity-7b03e-default-rtdb.firebaseio.com',
+    final url = Uri.https('digital-city-hrs-default-rtdb.firebaseio.com',
         '/userFavorites/$userId/$id.json', {'auth': '$token'});
     try {
       final response = await http.put(

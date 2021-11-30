@@ -32,7 +32,7 @@ class Auth with ChangeNotifier {
 
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
-    const params = {'key': 'AIzaSyA55Xon-JcBVgJSeb501iPx8ZzE1wwxW5g'};
+    const params = {'key': 'AIzaSyD9J7gRdJyE7BNnbXGKUcuSGPoxaPU3TSE'};
     final url = Uri.https(
         'identitytoolkit.googleapis.com', '/v1/accounts:$urlSegment', params);
     try {
