@@ -48,7 +48,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyShop'),
+        backgroundColor: Color.fromRGBO(245, 246, 247, 1),
+        foregroundColor: Colors.black,
+        title: Text(
+          'Home',
+        ),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
@@ -95,7 +99,36 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ProductsGrid(_showOnlyFavorites),
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Container(
+                    height: 200,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/promotion.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    _showOnlyFavorites ? 'Your Favorites' : 'All Items',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                ProductsGrid(_showOnlyFavorites),
+              ],
+            ),
     );
   }
 }

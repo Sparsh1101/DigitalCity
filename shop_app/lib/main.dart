@@ -49,9 +49,9 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
-          title: 'MyShop',
+          title: 'DigitalCity',
           theme: ThemeData(
-            primarySwatch: Colors.purple,
+            primarySwatch: Colors.deepOrange,
             accentColor: Colors.deepOrange,
             fontFamily: 'Lato',
             pageTransitionsTheme: PageTransitionsTheme(

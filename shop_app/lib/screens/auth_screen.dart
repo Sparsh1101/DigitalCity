@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use, missing_return, sdk_version_ui_as_code
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,15 +19,7 @@ class AuthScreen extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromRGBO(215, 117, 255, 1).withOpacity(0.5),
-                  Color.fromRGBO(255, 188, 117, 1).withOpacity(0.9),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0, 1],
-              ),
+              color: Color.fromRGBO(245, 246, 247, 1),
             ),
           ),
           SingleChildScrollView(
@@ -41,28 +31,14 @@ class AuthScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Flexible(
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 20.0),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                          )
-                        ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 40,
                       ),
                       child: Text(
-                        'MyShop',
+                        'DigitalCity',
                         style: TextStyle(
-                          color:
-                              Theme.of(context).accentTextTheme.headline6.color,
+                          color: Theme.of(context).textTheme.headline6.color,
                           fontSize: 50,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,
@@ -243,7 +219,10 @@ class _AuthCardState extends State<AuthCard>
             child: Column(
               children: <Widget>[
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'E-Mail'),
+                  decoration: InputDecoration(
+                    labelText: 'E-Mail',
+                    icon: Icon(Icons.email),
+                  ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value.isEmpty || !value.contains('@')) {
@@ -256,7 +235,10 @@ class _AuthCardState extends State<AuthCard>
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Password'),
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    icon: Icon(Icons.lock),
+                  ),
                   obscureText: true,
                   controller: _passwordController,
                   validator: (value) {
@@ -281,8 +263,10 @@ class _AuthCardState extends State<AuthCard>
                       position: _slideAnimation,
                       child: TextFormField(
                         enabled: _authMode == AuthMode.Signup,
-                        decoration:
-                            InputDecoration(labelText: 'Confirm Password'),
+                        decoration: InputDecoration(
+                          labelText: 'Confirm Password',
+                          icon: Icon(Icons.lock),
+                        ),
                         obscureText: true,
                         validator: _authMode == AuthMode.Signup
                             ? (value) {
@@ -313,13 +297,23 @@ class _AuthCardState extends State<AuthCard>
                     color: Theme.of(context).primaryColor,
                     textColor: Theme.of(context).primaryTextTheme.button.color,
                   ),
-                FlatButton(
-                  child: Text(
-                      '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
-                  onPressed: _switchAuthMode,
-                  padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textColor: Theme.of(context).primaryColor,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                  ),
+                  child: FlatButton(
+                    child: Text(
+                      '${_authMode == AuthMode.Login ? 'New User? Sign Up' : 'Have an account? Log In'}',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    onPressed: _switchAuthMode,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 30.0, vertical: 4),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    textColor: Colors.grey[600],
+                  ),
                 ),
               ],
             ),
