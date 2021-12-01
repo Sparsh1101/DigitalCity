@@ -68,23 +68,34 @@ class CartItem extends StatelessWidget {
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         margin: EdgeInsets.symmetric(
           horizontal: 15,
-          vertical: 4,
+          vertical: 5,
         ),
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(20),
           child: ListTile(
             leading: CircleAvatar(
               child: Padding(
                 padding: EdgeInsets.all(5),
                 child: FittedBox(
-                  child: Text('\$$price'),
+                  child: Text('₹$price'),
                 ),
               ),
             ),
-            title: Text(title),
-            subtitle: Text('Total: \$${(price * quantity)}'),
+            title: Padding(
+              padding: const EdgeInsets.only(),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            subtitle: Text('Total: ₹${(price * quantity)}'),
             trailing: Text('$quantity x'),
           ),
         ),

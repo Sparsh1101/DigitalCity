@@ -76,7 +76,7 @@ class ProductItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
-                  '\$${product.price}',
+                  '₹${product.price}',
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: TextStyle(

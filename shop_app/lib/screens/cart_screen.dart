@@ -18,9 +18,9 @@ class CartScreen extends StatelessWidget {
         backgroundColor: Color.fromRGBO(245, 246, 247, 1),
         foregroundColor: Colors.black,
         title: Padding(
-          padding: const EdgeInsets.only(left: 65),
+          padding: const EdgeInsets.only(left: 80),
           child: Text(
-            'Your Cart',
+            'My Cart',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -29,34 +29,6 @@ class CartScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Card(
-            margin: EdgeInsets.all(15),
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Total',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Spacer(),
-                  Chip(
-                    label: Text(
-                      '\$${cart.totalAmount.toStringAsFixed(2)}',
-                      style: TextStyle(
-                        color:
-                            Theme.of(context).primaryTextTheme.headline6.color,
-                      ),
-                    ),
-                    backgroundColor: Theme.of(context).primaryColor,
-                  ),
-                  OrderButton(cart: cart)
-                ],
-              ),
-            ),
-          ),
-          SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               itemCount: cart.items.length,
@@ -68,7 +40,41 @@ class CartScreen extends StatelessWidget {
                 cart.items.values.toList()[i].title,
               ),
             ),
-          )
+          ),
+          SizedBox(height: 10),
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            margin: EdgeInsets.all(20),
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Total',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  Chip(
+                    label: Text(
+                      '₹${cart.totalAmount.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).primaryTextTheme.headline6.color,
+                      ),
+                    ),
+                    backgroundColor: Theme.of(context).primaryColor,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          OrderButton(cart: cart),
         ],
       ),
     );
@@ -92,8 +98,9 @@ class _OrderButtonState extends State<OrderButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      child: _isLoading ? CircularProgressIndicator() : Text('ORDER NOW'),
+    return RaisedButton(
+      color: Colors.deepOrange,
+      child: _isLoading ? CircularProgressIndicator() : Text('PLACE ORDER'),
       onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
           ? null
           : () async {
@@ -109,7 +116,7 @@ class _OrderButtonState extends State<OrderButton> {
               });
               widget.cart.clear();
             },
-      textColor: Theme.of(context).primaryColor,
+      textColor: Colors.white,
     );
   }
 }
