@@ -74,7 +74,10 @@ class CartScreen extends StatelessWidget {
               ),
             ),
           ),
-          OrderButton(cart: cart),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 25.0),
+            child: OrderButton(cart: cart),
+          ),
         ],
       ),
     );

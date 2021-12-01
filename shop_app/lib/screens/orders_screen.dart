@@ -13,7 +13,17 @@ class OrdersScreen extends StatelessWidget {
     print('building orders');
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Orders'),
+        backgroundColor: Color.fromRGBO(245, 246, 247, 1),
+        foregroundColor: Colors.black,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 80),
+          child: Text(
+            'My Orders',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
       drawer: AppDrawer(),
       body: FutureBuilder(

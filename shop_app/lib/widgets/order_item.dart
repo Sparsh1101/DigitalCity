@@ -26,13 +26,27 @@ class _OrderItemState extends State<OrderItem> {
       height:
           _expanded ? min(widget.order.products.length * 20.0 + 110, 200) : 95,
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         margin: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             ListTile(
-              title: Text('₹${widget.order.amount}'),
+              title: Padding(
+                padding: const EdgeInsets.only(),
+                child: Text(
+                  'Total Amount: ₹${widget.order.amount}',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.deepOrange,
+                  ),
+                ),
+              ),
               subtitle: Text(
-                DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
+                'Order Placed On: ' +
+                    DateFormat('dd/MM/yyyy hh:mm')
+                        .format(widget.order.dateTime),
               ),
               trailing: IconButton(
                 icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
