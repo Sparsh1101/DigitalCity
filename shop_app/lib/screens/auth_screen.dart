@@ -19,7 +19,7 @@ class AuthScreen extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: Color.fromRGBO(245, 246, 247, 1),
+              color: Color.fromRGBO(1, 0, 53, 1),
             ),
           ),
           SingleChildScrollView(
@@ -35,14 +35,28 @@ class AuthScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(
                         bottom: 40,
                       ),
-                      child: Text(
-                        'DigitalCity',
-                        style: TextStyle(
-                          color: Theme.of(context).textTheme.headline6.color,
-                          fontSize: 50,
-                          fontFamily: 'Anton',
-                          fontWeight: FontWeight.normal,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Digital',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 50,
+                              fontFamily: 'Anton',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Text(
+                            ' City',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 50,
+                              fontFamily: 'Anton',
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
