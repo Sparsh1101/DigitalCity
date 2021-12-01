@@ -23,6 +23,14 @@ class Cart with ChangeNotifier {
     return {..._items};
   }
 
+  int get itemCartCount {
+    int sum = 0;
+    for (int i = 0; i < _items.length; i++) {
+      sum += _items.values.toList()[i].quantity;
+    }
+    return sum;
+  }
+
   int get itemCount {
     return _items.length;
   }
