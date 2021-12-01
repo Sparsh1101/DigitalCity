@@ -104,7 +104,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         horizontal: 20,
                       ),
                       child: Text(
-                        'Price: \$${loadedProduct.price}',
+                        'Price: ₹${loadedProduct.price}',
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontSize: 22,
