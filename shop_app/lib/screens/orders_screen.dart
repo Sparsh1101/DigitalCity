@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../providers/orders.dart' show Orders;
 import '../widgets/order_item.dart';
-import '../widgets/app_drawer.dart';
 
 class OrdersScreen extends StatelessWidget {
   static const routeName = '/orders';
@@ -16,7 +15,7 @@ class OrdersScreen extends StatelessWidget {
         backgroundColor: Color.fromRGBO(245, 246, 247, 1),
         foregroundColor: Colors.black,
         title: Padding(
-          padding: const EdgeInsets.only(left: 80),
+          padding: const EdgeInsets.only(left: 130),
           child: Text(
             'My Orders',
             style: TextStyle(
@@ -25,7 +24,6 @@ class OrdersScreen extends StatelessWidget {
           ),
         ),
       ),
-      drawer: AppDrawer(),
       body: FutureBuilder(
         future: Provider.of<Orders>(context, listen: false).fetchAndSetOrders(),
         builder: (ctx, dataSnapshot) {

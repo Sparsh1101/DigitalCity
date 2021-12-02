@@ -101,9 +101,21 @@ class _OrderButtonState extends State<OrderButton> {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      color: Colors.deepOrange,
-      child: _isLoading ? CircularProgressIndicator() : Text('PLACE ORDER'),
+    return ElevatedButton(
+      child: _isLoading
+          ? CircularProgressIndicator()
+          : Padding(
+              padding: const EdgeInsets.all(15),
+              child: Text('PLACE ORDER'),
+            ),
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+            side: BorderSide(color: Colors.orange),
+          ),
+        ),
+      ),
       onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
           ? null
           : () async {
@@ -118,8 +130,52 @@ class _OrderButtonState extends State<OrderButton> {
                 _isLoading = false;
               });
               widget.cart.clear();
+              showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: Column(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        radius: 30,
+                        child: Icon(Icons.check),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 10,
+                        ),
+                        child: Text('Thank You'),
+                      ),
+                    ],
+                  ),
+                  content: Text(
+                    'Your order is completed. You can check your order in the Orders Section.',
+                  ),
+                  actions: <Widget>[
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Colors.orange),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Okay',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(ctx).pop(true);
+                      },
+                    ),
+                  ],
+                ),
+              );
             },
-      textColor: Colors.white,
     );
   }
 }

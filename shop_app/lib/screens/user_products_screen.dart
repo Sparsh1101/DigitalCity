@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../providers/products.dart';
 import '../widgets/user_product_item.dart';
-import '../widgets/app_drawer.dart';
 import './edit_product_screen.dart';
 
 class UserProductsScreen extends StatelessWidget {
@@ -19,7 +18,8 @@ class UserProductsScreen extends StatelessWidget {
     print('rebuilding...');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Products'),
+        backgroundColor: Color.fromRGBO(245, 246, 247, 1),
+        foregroundColor: Colors.black,
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
@@ -28,8 +28,16 @@ class UserProductsScreen extends StatelessWidget {
             },
           ),
         ],
+        title: Padding(
+          padding: const EdgeInsets.only(left: 115),
+          child: Text(
+            'Your Products',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
-      drawer: AppDrawer(),
       body: FutureBuilder(
         future: _refreshProducts(context),
         builder: (ctx, snapshot) =>

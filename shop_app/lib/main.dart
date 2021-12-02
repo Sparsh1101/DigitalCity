@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import './helpers/custom_route.dart';
 import './screens/splash_screen.dart';
 import './screens/cart_screen.dart';
-import './screens/products_overview_screen.dart';
+import './screens/bottom_navigation_bar_screen.dart';
 import './screens/product_detail_screen.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
@@ -16,6 +16,7 @@ import './screens/orders_screen.dart';
 import './screens/user_products_screen.dart';
 import './screens/edit_product_screen.dart';
 import './screens/auth_screen.dart';
+import './screens/profile_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           home: auth.isAuth
-              ? ProductsOverviewScreen()
+              ? BottomNavigationBarScreen()
               : FutureBuilder(
                   future: auth.tryAutoLogin(),
                   builder: (ctx, authResultSnapshot) =>
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
             UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
             EditProductScreen.routeName: (ctx) => EditProductScreen(),
+            ProfileScreen.routeName: (ctx) => ProfileScreen(),
           },
         ),
       ),

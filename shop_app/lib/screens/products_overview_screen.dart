@@ -1,7 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/app_drawer.dart';
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
 import '../providers/cart.dart';
@@ -14,12 +15,14 @@ enum FilterOptions {
 }
 
 class ProductsOverviewScreen extends StatefulWidget {
+  bool showOnlyFavorites;
+  ProductsOverviewScreen(this.showOnlyFavorites);
+
   @override
   _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-  var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
 
@@ -50,40 +53,26 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(245, 246, 247, 1),
         foregroundColor: Colors.black,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 90),
-          child: Text(
-            'Home',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+        title: widget.showOnlyFavorites
+            ? Padding(
+                padding: const EdgeInsets.only(left: 130),
+                child: Text(
+                  'Favorites',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(left: 145),
+                child: Text(
+                  'Home',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
         actions: <Widget>[
-          PopupMenuButton(
-            onSelected: (FilterOptions selectedValue) {
-              setState(() {
-                if (selectedValue == FilterOptions.Favorites) {
-                  _showOnlyFavorites = true;
-                } else {
-                  _showOnlyFavorites = false;
-                }
-              });
-            },
-            icon: Icon(
-              Icons.more_vert,
-            ),
-            itemBuilder: (_) => [
-              PopupMenuItem(
-                child: Text('Only Favorites'),
-                value: FilterOptions.Favorites,
-              ),
-              PopupMenuItem(
-                child: Text('Show All'),
-                value: FilterOptions.All,
-              ),
-            ],
-          ),
           Consumer<Cart>(
             builder: (_, cart, ch) => Badge(
               child: ch,
@@ -100,7 +89,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ),
         ],
       ),
-      drawer: AppDrawer(),
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(),
@@ -129,14 +117,14 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                     margin: EdgeInsets.only(left: 20),
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      _showOnlyFavorites ? 'Your Favorites' : 'All Items',
+                      widget.showOnlyFavorites ? 'Your Favorites' : 'All Items',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  ProductsGrid(_showOnlyFavorites),
+                  ProductsGrid(widget.showOnlyFavorites),
                 ],
               ),
             )),
