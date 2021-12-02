@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 import './user_products_screen.dart';
@@ -15,9 +17,9 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
   int pageIndex = 0;
 
   List<Widget> pageList = <Widget>[
-    ProductsOverviewScreen(false),
+    ProductsOverviewScreen(false, ''),
     OrdersScreen(),
-    ProductsOverviewScreen(true),
+    ProductsOverviewScreen(true, ''),
     UserProductsScreen(),
     ProfileScreen(),
   ];

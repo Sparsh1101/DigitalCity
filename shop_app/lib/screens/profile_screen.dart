@@ -70,58 +70,172 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              elevation: 5,
+            Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.phone),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text(
-                        'Contact Us',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+              child: ElevatedButton(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.phone),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Contact Us',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      title: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Theme.of(context).primaryColor,
+                            radius: 30,
+                            child: Icon(Icons.phone),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 10,
+                            ),
+                            child: Text('Contact Us'),
+                          ),
+                        ],
+                      ),
+                      content: Text(
+                        'Phone Number: +91 9387378732 Email: digitalcity@gmail.com',
+                      ),
+                      actions: <Widget>[
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: Colors.orange),
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'Okay',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(ctx).pop(true);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
-            Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              elevation: 5,
+            Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.person),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text(
-                        'About Us',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+              child: ElevatedButton(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.person),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          'About Us',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      title: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Theme.of(context).primaryColor,
+                            radius: 30,
+                            child: Icon(Icons.person),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 10,
+                            ),
+                            child: Text('About Us'),
+                          ),
+                        ],
+                      ),
+                      content: Text(
+                        "Welcome to Digital City, your No. 1 source for all things Electronics. We're dedicated to providing you the very best of products, with an emphasis on 1]Quality 2]Delivery 3]Affordability. Founded in 2001, Digital City has come a long way from its beginnings in Mumbai. When we first started out, our passion for Electronics drove us to start our own business. We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.",
+                      ),
+                      actions: <Widget>[
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: Colors.orange),
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'Okay',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(ctx).pop(true);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
             Container(

@@ -23,6 +23,22 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
+  List<Product> get smartphones {
+    return _items.where((prodItem) => prodItem.category == 'Smartphones').toList();
+  }
+
+  List<Product> get laptops {
+    return _items.where((prodItem) => prodItem.category == 'Laptops').toList();
+  }
+   
+  List<Product> get tablets {
+    return _items.where((prodItem) => prodItem.category == 'Tablets').toList();
+  }
+
+  List<Product> get headphones {
+    return _items.where((prodItem) => prodItem.category == 'Headphones').toList();
+  }
+
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
@@ -60,6 +76,7 @@ class Products with ChangeNotifier {
           title: prodData['title'],
           description: prodData['description'],
           price: prodData['price'],
+          category: prodData['category'],
           isFavorite:
               favoriteData == null ? false : favoriteData[prodId] ?? false,
           imageUrl: prodData['imageUrl'],
@@ -84,12 +101,14 @@ class Products with ChangeNotifier {
           'imageUrl': product.imageUrl,
           'price': product.price,
           'creatorId': userId,
+          'category': product.category,
         }),
       );
       final newProduct = Product(
         title: product.title,
         description: product.description,
         price: product.price,
+        category: product.category,
         imageUrl: product.imageUrl,
         id: json.decode(response.body)['name'],
       );
@@ -111,7 +130,8 @@ class Products with ChangeNotifier {
             'title': newProduct.title,
             'description': newProduct.description,
             'imageUrl': newProduct.imageUrl,
-            'price': newProduct.price
+            'price': newProduct.price,
+            'category': newProduct.category,
           }));
       _items[prodIndex] = newProduct;
       notifyListeners();

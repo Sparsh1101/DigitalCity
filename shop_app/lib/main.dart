@@ -7,6 +7,7 @@ import './helpers/custom_route.dart';
 import './screens/splash_screen.dart';
 import './screens/cart_screen.dart';
 import './screens/bottom_navigation_bar_screen.dart';
+import './screens/products_overview_screen.dart';
 import './screens/product_detail_screen.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
@@ -72,6 +73,8 @@ class MyApp extends StatelessWidget {
                           : AuthScreen(),
                 ),
           routes: {
+            ProductsOverviewScreen.routeName: (ctx) =>
+                ProductsOverviewScreen(false, ''),
             ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen(),
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
