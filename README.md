@@ -1,4 +1,4 @@
-# DIGITALCITY
+# DIGITALCITY 📱
 
 In our project we aim at developing an app for an electronics shop -Digital City . This easy-to-use app will cover basic user authentication.A user can browse and order various electronic products available in the store.Besides,some additional features such as user wishlists,various filters and confirmation pop ups have been integrated in this user friendly app.
  
