@@ -41,7 +41,7 @@ $ flutter run
 ## Images
 
 | ![Login Page](shop_app/screenshots/ss1_login.png) | ![Sign Up Page](shop_app/screenshots/ss2_signup.png) | ![Home Page](shop_app/screenshots/ss3_home1.png) | ![Favorites Page](shop_app/screenshots/ss5_favorites.png) |
-|Item Details Page|Edit Products Page|Orders Page|Add To Cart Functionality|
+|---|---|---|---|
 | ![Item Details Page](shop_app/screenshots/ss6_itemdet.png) | ![Edit Products Page](shop_app/screenshots/ss7_products_edit.png) | ![Orders Page](shop_app/screenshots/ss8_orders.png) | ![Add to Cart Functionality](shop_app/screenshots/ss9_addcart.png) |
-|My Cart Page|Order Confirmation Page|Profile Page|---|
+|---|---|---|---|
 | ![My Cart Page](shop_app/screenshots/ss10_cart.png) | ![Order Confirmation Page](shop_app/screenshots/ss11_addconf.png) | ![Profile Page](shop_app/screenshots/ss12_profile.png) | 
